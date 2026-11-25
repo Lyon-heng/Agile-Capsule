@@ -1,6 +1,6 @@
 {
   "name": "agile-capsule",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Agile Capsule — Windows desktop dynamic capsule with system monitor",
   "scripts": {
     "start": "electron .",

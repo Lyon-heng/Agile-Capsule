@@ -8,8 +8,8 @@ Agile Capsule 是一个 Windows 顶部灵动岛 / 刘海式信息中心：把时
 
 | 文件 | 说明 |
 | --- | --- |
-| `Agile-Capsule-1.0.0-portable.exe` | 便携版，双击即可运行，不需要安装 |
-| `Agile-Capsule-Setup-1.0.0.exe` | 安装版，可选择安装目录，创建开始菜单和桌面快捷方式 |
+| `Agile-Capsule-1.0.1-portable.exe` | 便携版，双击即可运行，不需要安装 |
+| `Agile-Capsule-Setup-1.0.1.exe` | 安装版，可选择安装目录，创建开始菜单和桌面快捷方式 |
 
 系统要求：Windows 10 / 11，64 位。
 
@@ -49,9 +49,16 @@ npm run dist
 下载后可用 `SHA256SUMS.txt` 校验文件完整性：
 
 ```powershell
-Get-FileHash .\Agile-Capsule-1.0.0-portable.exe -Algorithm SHA256
-Get-FileHash .\Agile-Capsule-Setup-1.0.0.exe -Algorithm SHA256
+Get-FileHash .\Agile-Capsule-1.0.1-portable.exe -Algorithm SHA256
+Get-FileHash .\Agile-Capsule-Setup-1.0.1.exe -Algorithm SHA256
 ```
+
+## 更新记录
+
+### 1.0.1
+
+- 修复全屏监听脚本在 Windows PowerShell 5.1 下因 UTF-8 无 BOM 导致解析失败，应用全屏后灵动岛不隐藏的问题。
+- 统一所有运行时 PowerShell 脚本为 UTF-8 BOM，避免同类编码问题。
 
 ## 许可证
 

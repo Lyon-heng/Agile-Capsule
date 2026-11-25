@@ -1,4 +1,4 @@
-param(
+﻿param(
   [int]$ParentPid = 0
 )
 # 进程占用监控：常驻运行，每 2 秒采样一次 CPU/内存，按程序名聚合后输出 JSON 行。

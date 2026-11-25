@@ -1,4 +1,4 @@
-param(
+﻿param(
   [string]$Scope = 'full'   # full = 只认真全屏/无边框全屏；max = 最大化也算
 )
 $ErrorActionPreference = 'SilentlyContinue'

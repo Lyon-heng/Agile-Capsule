@@ -1,4 +1,4 @@
-# WinIsland 常驻媒体控制服务：从 stdin 逐行读取 JSON 指令并立即执行
+﻿# WinIsland 常驻媒体控制服务：从 stdin 逐行读取 JSON 指令并立即执行
 # 每行格式: {"cmd":"play|pause|toggle|next|prev|seek|rewind","source":"smtc|wintitle","app":"AUMID","seek":12.5}
 $ErrorActionPreference = 'SilentlyContinue'
 Add-Type -AssemblyName System.Runtime.WindowsRuntime
