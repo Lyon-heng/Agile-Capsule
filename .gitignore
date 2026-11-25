@@ -1,0 +1,9 @@
+node_modules/
+dist/
+release-build-github/
+release-audit/
+*.exe
+*.exe.blockmap
+*.log
+.env
+.env.*

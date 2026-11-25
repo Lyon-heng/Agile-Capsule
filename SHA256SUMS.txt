@@ -1,0 +1,2 @@
+98ab9018c75c51eeaff9d76efdde57baba38ec77eb1061f5a7603543ea80ef32  Agile-Capsule-1.0.0-portable.exe
+7cafcbc3849ced7ec3d30ee72c91adec2a8e1bd13791a12f514c5c0e0235251c  Agile-Capsule-Setup-1.0.0.exe

@@ -1,0 +1,73 @@
+{
+  "name": "agile-capsule",
+  "version": "1.0.0",
+  "description": "Agile Capsule — Windows desktop dynamic capsule with system monitor",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.agilecapsule.desktop",
+    "productName": "Agile Capsule",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/index.html",
+      "renderer/menu.html",
+      "renderer/settings.html",
+      "assets/icon.png",
+      "assets/icon.ico",
+      "assets/net-style-chips.png",
+      "assets/net-style-stack.png",
+      "assets/net-style-meter.png",
+      "assets/net-style-min.png",
+      "assets-public/hw-theme-A.png",
+      "assets-public/hw-theme-B.png",
+      "assets-public/hw-theme-C.png",
+      "assets-public/hw-theme-D.png",
+      "media/smtc-monitor.ps1",
+      "media/fullscreen-watch.ps1",
+      "media/system-control.ps1",
+      "media/devices-battery.ps1",
+      "media/devices_hid_battery.py",
+      "media/wechat-avatars.ps1",
+      "media/wechat-sessions.ps1",
+      "media/wechat-open.ps1",
+      "media/wifi-control.ps1",
+      "media/notify-diag.ps1",
+      "media/notify-watch.ps1",
+      "media/wechat-ocr.ps1",
+      "media/media-control-server.ps1",
+      "media/process-monitor.ps1",
+      "media/media-control.ps1"
+    ],
+    "asarUnpack": ["media/**"],
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Agile Capsule",
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^45.3.3",
+    "electron-builder": "^26.18.0"
+  },
+  "dependencies": {
+    "systeminformation": "^5.33.23"
+  },
+  "author": "Agile Capsule",
+  "main": "main.js"
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+  html, body { width: 100%; height: 100%; background: transparent; overflow: hidden; }
+  body {
+    padding: 6px;
+    font-family: "Segoe UI Variable Text", "Segoe UI", "Microsoft YaHei UI", sans-serif;
+    color: #e8ebf2;
+    -webkit-font-smoothing: antialiased;
+  }
+  .menu {
+    width: 100%;
+    padding: 4px;
+    border-radius: 11px;
+    background: linear-gradient(180deg, rgba(30, 31, 37, 0.98), rgba(19, 20, 24, 0.985));
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    transform-origin: 16px 11px;
+    animation: menu-in 0.16s cubic-bezier(0.2, 0.9, 0.3, 1.15) both;
+  }
+  @keyframes menu-in {
+    from { opacity: 0; transform: translateY(-4px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.13s ease, transform 0.1s ease;
+    outline: none;
+  }
+  .item:hover { background: rgba(255, 255, 255, 0.065); }
+  .item:active { transform: scale(0.988); }
+  .item:focus-visible { box-shadow: inset 0 0 0 1px rgba(125, 177, 255, 0.5); }
+  .settings { height: 34px; padding: 0 6px; }
+  .auto { height: 34px; padding: 0 6px; }
+  .quit { height: 30px; padding: 0 6px; }
+  .ico {
+    width: 20px;
+    height: 20px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #a8cfff;
+    background: rgba(108, 164, 255, 0.12);
+  }
+  .ico svg { width: 11px; height: 11px; stroke-width: 1.7; }
+  .auto .ico { color: #ffd08a; background: rgba(255, 176, 76, 0.11); }
+  .quit .ico { color: #a9afbc; background: rgba(255, 255, 255, 0.055); }
+  .text { min-width: 0; flex: 1; padding-left: 7px; }
+  .title { display: block; font-size: 11.5px; line-height: 15px; font-weight: 600; letter-spacing: 0.1px; }
+  .quit .title { color: #d7dae2; }
+  .quit:hover { background: rgba(255, 92, 92, 0.075); }
+  .quit:hover .title { color: #ffaaa6; }
+  .quit:hover .ico { color: #ff9b96; background: rgba(255, 92, 92, 0.09); }
+  .sep { height: 1px; margin: 2px 5px; background: rgba(255, 255, 255, 0.06); }
+  .switch {
+    width: 26px;
+    height: 14px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+    position: relative;
+    transition: background 0.16s ease, box-shadow 0.16s ease;
+  }
+  .switch.on {
+    background: #3b82f6;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.42);
+  }
+  .knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #f4f7ff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    transition: transform 0.16s cubic-bezier(0.25, 0.8, 0.3, 1.15);
+  }
+  .switch.on .knob { transform: translateX(12px); }
+  .badge {
+    font-size: 9px;
+    line-height: 14px;
+    padding: 0 5px;
+    border-radius: 5px;
+    color: #8cc9ff;
+    background: rgba(90, 160, 255, 0.12);
+    margin-left: 6px;
+  }
+</style>
+</head>
+<body>
+  <div class="menu">
+    <button class="item settings" id="settings" tabindex="0">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </span>
+      <span class="text"><span class="title">打开设置</span></span>
+    </button>
+
+    <button class="item auto" id="autostart" tabindex="0" role="menuitemcheckbox">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 2 4.2 13H11l-1.2 9L19.8 10H13z"></path>
+        </svg>
+      </span>
+      <span class="text"><span class="title">开机自启</span></span>
+      <span class="switch" id="switch" aria-hidden="true"><span class="knob"></span></span>
+    </button>
+
+    <div class="sep"></div>
+
+    <button class="item quit" id="quit" tabindex="0">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <path d="M16 17l5-5-5-5"></path>
+          <path d="M21 12H9"></path>
+        </svg>
+      </span>
+      <span class="text"><span class="title">退出 Agile Capsule</span></span>
+    </button>
+  </div>
+
+<script>
+  const api = window.islandMenu;
+  const autoOn = new URLSearchParams(location.search).get('auto') === '1';
+  const sw = document.getElementById('switch');
+  const autoBtn = document.getElementById('autostart');
+  let armed = false;
+
+  if (autoOn) sw.classList.add('on');
+  autoBtn.setAttribute('aria-checked', String(autoOn));
+
+  setTimeout(() => { armed = true; }, 140);
+
+  function close() {
+    try { api.close(); } catch (e) { window.close(); }
+  }
+  function action(name, payload) {
+    try { api.action(name, payload); } catch (e) { window.close(); }
+  }
+
+  document.getElementById('settings').addEventListener('click', () => action('settings'));
+
+  autoBtn.addEventListener('click', () => {
+    const on = !sw.classList.contains('on');
+    sw.classList.toggle('on', on);
+    autoBtn.setAttribute('aria-checked', String(on));
+    setTimeout(() => action('autostart', on), 180);
+  });
+
+  document.getElementById('quit').addEventListener('click', () => action('quit'));
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+  window.addEventListener('blur', () => { if (armed) close(); });
+</script>
+</body>
+</html>
+
