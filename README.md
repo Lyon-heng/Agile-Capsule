@@ -59,6 +59,7 @@ Get-FileHash .\Agile-Capsule-Setup-1.0.1.exe -Algorithm SHA256
 
 - 修复全屏监听脚本在 Windows PowerShell 5.1 下因 UTF-8 无 BOM 导致解析失败，应用全屏后灵动岛不隐藏的问题。
 - 统一所有运行时 PowerShell 脚本为 UTF-8 BOM，避免同类编码问题。
+- 更新应用图标，采用新的胶囊造型图标。
 
 ## 许可证
 
